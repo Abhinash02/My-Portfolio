@@ -266,83 +266,83 @@
 //   });
 
 
-// require('dotenv').config();
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const educationRoutes = require('./routes/educationRoutes');
-// const experienceRoutes = require('./routes/experienceRoutes');
-// const skillRoutes = require('./routes/skillRoutes');
-// const projectRoutes = require('./routes/projectRoutes');
-// const aboutRoutes = require('./routes/aboutRoutes');
-// const resumeRoutes = require('./routes/resumeRoutes');
-// const authRoutes = require('./routes/authRoutes');
-// const app = express();
-
-// app.use(cors({
-//   origin: ['https://frontend-ha4h.onrender.com', 'https://abhinash-portfolio.onrender.com'],
-//   credentials: true,
-// }));
-// app.use(express.json());
-
-// // Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log('MongoDB connected to portfolio database'))
-//   .catch((err) => console.error('MongoDB connection error:', err));
-
-// // Routes
-// app.use('/api/education', educationRoutes);
-// app.use('/api/experience', experienceRoutes);
-// app.use('/api/skills', skillRoutes);
-// app.use('/api/projects', projectRoutes);
-// app.use('/api/about', aboutRoutes);
-// app.use('/api/resume', resumeRoutes);
-// app.use('/api', authRoutes);
-
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
-//   .on('error', (err) => {
-//     if (err.code === 'EADDRINUSE') {
-//       console.error(`Port ${PORT} is already in use. Please free the port or use a different one.`);
-//       process.exit(1);
-//     } else {
-//       console.error('Server error:', err);
-//     }
-//   });
+require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const educationRoutes = require('./routes/educationRoutes');
+const experienceRoutes = require('./routes/experienceRoutes');
+const skillRoutes = require('./routes/skillRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const aboutRoutes = require('./routes/aboutRoutes');
+const resumeRoutes = require('./routes/resumeRoutes');
+const authRoutes = require('./routes/authRoutes');
 const app = express();
-const Education = require('./models/Education');
-const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors({
   origin: ['https://frontend-ha4h.onrender.com', 'https://abhinash-portfolio.onrender.com'],
   credentials: true,
 }));
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://abhinash:Abhi123@abhiporfolio.kml1x1c.mongodb.net/', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("MongoDB error:", err));
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected to portfolio database'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
-// Example route
-app.get('/api/education', async (req, res) => {
-  try {
-    const education = await Education.find();
-    res.json(education);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch education data' });
-  }
-});
+// Routes
+app.use('/api/education', educationRoutes);
+app.use('/api/experience', experienceRoutes);
+app.use('/api/skills', skillRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/about', aboutRoutes);
+app.use('/api/resume', resumeRoutes);
+app.use('/api', authRoutes);
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+  .on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`Port ${PORT} is already in use. Please free the port or use a different one.`);
+      process.exit(1);
+    } else {
+      console.error('Server error:', err);
+    }
+  });
+// const express = require('express');
+// const cors = require('cors');
+// const mongoose = require('mongoose');
+// const app = express();
+// const Education = require('./models/Education');
+// const port = process.env.PORT || 5000;
+
+// // Middleware
+// app.use(cors({
+//   origin: ['https://frontend-ha4h.onrender.com', 'https://abhinash-portfolio.onrender.com'],
+//   credentials: true,
+// }));
+// app.use(express.json());
+
+// // MongoDB connection
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://abhinash:Abhi123@abhiporfolio.kml1x1c.mongodb.net/', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => console.log("MongoDB connected"))
+//   .catch(err => console.error("MongoDB error:", err));
+
+// // Example route
+// app.get('/api/education', async (req, res) => {
+//   try {
+//     const education = await Education.find();
+//     res.json(education);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: 'Failed to fetch education data' });
+//   }
+// });
+
+// // Start server
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
 
