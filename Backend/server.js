@@ -281,9 +281,10 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
+  origin: 'https://abhinash-portfolio.onrender.com', // your frontend URL
+  credentials: true // if using cookies or sessions
 }));
+
 app.use(express.json());
 
 // Connect to MongoDB
