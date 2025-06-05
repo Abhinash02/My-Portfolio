@@ -280,10 +280,12 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
+const cors = require('cors');
 app.use(cors({
-  origin: 'https://abhinash-portfolio.onrender.com', // your frontend URL
-  credentials: true // if using cookies or sessions
+  origin: 'https://frontend-ha4h.onrender.com',
+  credentials: true
 }));
+
 
 app.use(express.json());
 
