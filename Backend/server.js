@@ -277,15 +277,12 @@ const projectRoutes = require('./routes/projectRoutes');
 const aboutRoutes = require('./routes/aboutRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
 const authRoutes = require('./routes/authRoutes');
-
-const app = express
+const app = express();
 
 app.use(cors({
-  origin: 'https://frontend-ha4h.onrender.com',
-  credentials: true
+  origin: ['https://frontend-ha4h.onrender.com', 'https://abhinash-portfolio.onrender.com'],
+  credentials: true,
 }));
-
-
 app.use(express.json());
 
 // Connect to MongoDB
