@@ -4,12 +4,13 @@ const Education = require('../models/Education');
 const authMiddleware = require('../middleware/authMiddleware');
 
 // Get all education entries (public)
-router.get('/', async (req, res) => {
+router.get('/education', async (req, res) => {
   try {
-    const education = await Education.find().sort({ createdAt: -1 });
+    const education = await Education.find();
     res.json(education);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch education data' });
   }
 });
 
