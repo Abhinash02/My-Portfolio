@@ -278,9 +278,8 @@ const aboutRoutes = require('./routes/aboutRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
 const authRoutes = require('./routes/authRoutes');
 
-const app = express();
+const app = express
 
-const cors = require('cors');
 app.use(cors({
   origin: 'https://frontend-ha4h.onrender.com',
   credentials: true
