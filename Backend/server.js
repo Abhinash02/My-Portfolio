@@ -323,7 +323,7 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'your-mongo-uri-here', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://abhinash:Abhi123@abhiporfolio.kml1x1c.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log("MongoDB connected"))
